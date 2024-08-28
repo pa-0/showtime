@@ -1,1 +1,3 @@
-# 用于在PPT演示时，仍可显示时钟
+# showtime
+
+Basic timer with a PowerPoint integration.  
