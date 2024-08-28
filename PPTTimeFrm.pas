@@ -33,7 +33,7 @@ implementation
 
 procedure TFrmPPTTime.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CanClose := MessageDlg('ÄúÈ·ÈÏÐèÒªÍË³öÂð£¿',
+  CanClose := MessageDlg('Are you sure you want to exit?',
     mtConfirmation, [mbYes, mbNo], 0) = mrYes;
   if CanClose then
     Timer1.Enabled := False;
@@ -61,7 +61,7 @@ procedure TFrmPPTTime.ResetTimer;
 var
   num: Integer;
 begin
-  num := StrToIntDef(InputBox('µ¹¼ÆÊ±Æ÷', 'ÇëÊäÈëÄúÒª¼ÆÊ±µÄ·ÖÖÓÊý£º', '5'), 0);
+  num := StrToIntDef(InputBox('Countdown', 'Duration (m)ï¼š', '5'), 0);
   if num > 0 then
     begin
       TimerCount := num;
@@ -87,12 +87,12 @@ begin
     num2 := MinutesBetween(Time(), StartTime);
     num1 := TimerCount - num2;
     if num1 > 0 then
-      lblTitle.Caption := Format('ÒÑ¹ý %g ·ÖÖÓ', [num2])
+      lblTitle.Caption := Format('Elapsed Time: %g', [num2])
     else
       TimerCount := 0;
   end;
   if TimerCount = 0 then
-    lblTitle.Caption := Format('¼ÆÊ±Æ÷Í£Ö¹£¡',
+    lblTitle.Caption := Format('Time's up!',
       [TimerCount - SecondsBetween(Time(), StartTime)]);
 end;
 
